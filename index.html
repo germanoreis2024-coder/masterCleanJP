@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Master Clean JP — Limpeza de Estofados em João Pessoa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --navy: #0a1628;
+      --navy-mid: #112240;
+      --gold: #c8a96e;
+      --gold-light: #e8c98a;
+      --cream: #faf7f2;
+      --white: #ffffff;
+      --gray: #8892a4;
+      --radius: 4px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--navy);
+      overflow-x: hidden;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 60px;
+      background: rgba(10,22,40,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(200,169,110,0.2);
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+    }
+    .logo span { color: var(--white); }
+    nav a {
+      color: #bbb;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-left: 36px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+    nav a:hover { color: var(--gold); }
+    .header-cta {
+      margin-left: 36px;
+      background: var(--gold);
+      color: var(--navy);
+      padding: 9px 22px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background .2s, transform .15s;
+    }
+    .header-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 120px 60px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(200,169,110,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: 20%;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(200,169,110,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-text { max-width: 520px; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(200,169,110,0.15);
+      border: 1px solid rgba(200,169,110,0.3);
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 2px;
+      margin-bottom: 28px;
+      animation: fadeUp .7s ease both;
+    }
+    .badge::before { content: '★'; font-size: 0.9rem; }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 24px;
+      animation: fadeUp .7s .1s ease both;
+    }
+    h1 em {
+      color: var(--gold);
+      font-style: normal;
+      position: relative;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--gray);
+      line-height: 1.7;
+      margin-bottom: 40px;
+      font-weight: 300;
+      animation: fadeUp .7s .2s ease both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fadeUp .7s .3s ease both;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 14px 28px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      box-shadow: 0 4px 24px rgba(200,169,110,0.3);
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(200,169,110,0.4); }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1.5px solid rgba(200,169,110,0.4);
+      color: var(--gold);
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 14px 28px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: border-color .2s, background .2s;
+    }
+    .btn-outline:hover { border-color: var(--gold); background: rgba(200,169,110,0.08); }
+
+    /* Hero visual side */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: fadeUp .7s .2s ease both;
+    }
+    .visual-card {
+      background: var(--navy-mid);
+      border: 1px solid rgba(200,169,110,0.2);
+      border-radius: 12px;
+      padding: 40px;
+      width: 100%;
+      max-width: 380px;
+      position: relative;
+    }
+    .visual-card::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: 30px; right: 30px; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      border-radius: 0 0 4px 4px;
+    }
+    .stars {
+      color: var(--gold);
+      font-size: 1.3rem;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+    .rating-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+    }
+    .rating-label { color: var(--gray); font-size: 0.85rem; margin-bottom: 28px; }
+
+    .testimonials { display: flex; flex-direction: column; gap: 16px; }
+    .testimonial {
+      background: rgba(255,255,255,0.04);
+      border-left: 2px solid rgba(200,169,110,0.4);
+      border-radius: 0 6px 6px 0;
+      padding: 12px 16px;
+      color: #ccc;
+      font-size: 0.84rem;
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--gold);
+      padding: 28px 60px;
+      display: flex;
+      justify-content: center;
+      gap: 80px;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--navy);
+    }
+    .stat-label { font-size: 0.82rem; font-weight: 600; color: rgba(10,22,40,0.7); letter-spacing: 0.06em; text-transform: uppercase; }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 100px 60px; }
+    .section-tag {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .section-sub {
+      font-size: 1rem;
+      color: #666;
+      line-height: 1.7;
+      max-width: 540px;
+      margin-bottom: 60px;
+    }
+
+    /* ── SERVICES ── */
+    .services-section { background: var(--white); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+    }
+    .service-card {
+      border: 1px solid #e8e4de;
+      border-radius: 8px;
+      padding: 36px 32px;
+      transition: border-color .2s, box-shadow .2s, transform .2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0; height: 3px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .3s;
+    }
+    .service-card:hover { border-color: var(--gold); box-shadow: 0 8px 40px rgba(0,0,0,0.08); transform: translateY(-4px); }
+    .service-card:hover::after { transform: scaleX(1); }
+    .service-icon { font-size: 2.4rem; margin-bottom: 20px; }
+    .service-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .service-desc { font-size: 0.9rem; color: #666; line-height: 1.7; }
+
+    /* ── HOW IT WORKS ── */
+    .how-section { background: var(--navy); }
+    .how-section h2 { color: var(--white); }
+    .how-section .section-sub { color: var(--gray); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 40px;
+      counter-reset: step;
+    }
+    .step { position: relative; }
+    .step-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      font-weight: 900;
+      color: rgba(200,169,110,0.15);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .step-title { font-weight: 700; font-size: 1.05rem; color: var(--white); margin-bottom: 10px; }
+    .step-desc { font-size: 0.88rem; color: var(--gray); line-height: 1.7; }
+
+    /* ── REVIEWS ── */
+    .reviews-section { background: var(--cream); }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .review-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 30px;
+      border: 1px solid #ede9e2;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+    }
+    .review-stars { color: var(--gold); margin-bottom: 14px; font-size: 1rem; }
+    .review-text { font-size: 0.92rem; color: #444; line-height: 1.7; font-style: italic; margin-bottom: 20px; }
+    .review-author { font-weight: 700; font-size: 0.85rem; color: var(--navy); }
+    .review-via { font-size: 0.78rem; color: #aaa; }
+
+    /* ── CTA SECTION ── */
+    .cta-section {
+      background: var(--gold);
+      text-align: center;
+      padding: 80px 60px;
+    }
+    .cta-section h2 { color: var(--navy); margin-bottom: 16px; }
+    .cta-section p { color: rgba(10,22,40,0.7); font-size: 1rem; max-width: 480px; margin: 0 auto 36px; line-height: 1.7; }
+    .btn-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--navy);
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 16px 36px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: background .2s, transform .15s;
+    }
+    .btn-dark:hover { background: var(--navy-mid); transform: translateY(-2px); }
+
+    /* ── CONTACT SECTION ── */
+    .contact-section { background: var(--navy-mid); }
+    .contact-section h2 { color: var(--white); }
+    .contact-section .section-sub { color: var(--gray); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 28px; }
+    .contact-item { display: flex; gap: 16px; align-items: flex-start; }
+    .contact-icon {
+      background: rgba(200,169,110,0.15);
+      border: 1px solid rgba(200,169,110,0.3);
+      color: var(--gold);
+      width: 44px; height: 44px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .contact-label { font-size: 0.78rem; font-weight: 600; color: var(--gray); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; }
+    .contact-value { color: var(--white); font-size: 0.95rem; }
+    .contact-value a { color: var(--gold); text-decoration: none; }
+
+    .whatsapp-block {
+      background: rgba(200,169,110,0.08);
+      border: 1px solid rgba(200,169,110,0.2);
+      border-radius: 10px;
+      padding: 36px;
+    }
+    .whatsapp-block h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .whatsapp-block p { color: var(--gray); font-size: 0.9rem; line-height: 1.6; margin-bottom: 24px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(200,169,110,0.15);
+      padding: 32px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    footer .logo { font-size: 1.1rem; }
+    footer p { color: #555; font-size: 0.82rem; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      header { padding: 16px 24px; }
+      nav { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; gap: 50px; }
+      section { padding: 70px 24px; }
+      .stats-bar { padding: 24px; gap: 40px; }
+      .contact-grid { grid-template-columns: 1fr; }
+      footer { padding: 24px; flex-direction: column; text-align: center; }
+      .cta-section { padding: 60px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">Master Clean <span>JP</span></div>
+  <nav>
+    <a href="#servicos">Serviços</a>
+    <a href="#como-funciona">Como Funciona</a>
+    <a href="#avaliacoes">Avaliações</a>
+    <a href="#contato">Contato</a>
+    <a href="https://wa.me/5583987619326" class="header-cta">Agendar</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="badge">5,0 ★ no Google — 35 avaliações</div>
+    <h1>Seus estofados <em>novos</em> de novo</h1>
+    <p class="hero-sub">
+      Limpeza profissional de sofás, tapetes, cadeiras e bancos automotivos em João Pessoa. Eliminamos manchas, odores e ácaros com resultados que falam por si.
+    </p>
+    <div class="hero-actions">
+      <a href="https://wa.me/5583987619326" class="btn-primary">
+        📲 Agendar pelo WhatsApp
+      </a>
+      <a href="#servicos" class="btn-outline">
+        Ver serviços →
+      </a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="visual-card">
+      <div class="stars">★★★★★</div>
+      <div class="rating-number">5,0</div>
+      <div class="rating-label">Avaliação média · Google</div>
+      <div class="testimonials">
+        <div class="testimonial">"Já é a segunda vez que contrato e a qualidade é ótima."</div>
+        <div class="testimonial">"Deixou os bancos do meu carro como novo!"</div>
+        <div class="testimonial">"Ótimo profissional, limpou meu sofá muito bem!"</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-num">35+</div>
+    <div class="stat-label">Avaliações 5 estrelas</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">5,0</div>
+    <div class="stat-label">Nota no Google</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">JP</div>
+    <div class="stat-label">João Pessoa e região</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Satisfação garantida</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services-section" id="servicos">
+  <div class="section-tag">O que fazemos</div>
+  <h2>Nossos serviços</h2>
+  <p class="section-sub">Cuidamos de cada tecido com atenção e produtos especializados para garantir o melhor resultado.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🛋️</div>
+      <div class="service-title">Limpeza de Sofás</div>
+      <p class="service-desc">Higienização profunda de sofás de todos os tamanhos e tecidos. Removemos manchas, ácaros e odores com eficiência e cuidado.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🚗</div>
+      <div class="service-title">Bancos Automotivos</div>
+      <p class="service-desc">Limpeza completa de bancos de carro, couro ou tecido. Seu veículo de volta ao aspecto original, cheiroso e impecável.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏠</div>
+      <div class="service-title">Tapetes e Carpetes</div>
+      <p class="service-desc">Lavagem e higienização de tapetes residenciais e comerciais. Removemos toda sujeira, pelos e manchas difíceis.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🐾</div>
+      <div class="service-title">Remoção de Odores</div>
+      <p class="service-desc">Especialistas na remoção de odores e manchas causadas por animais de estimação. Resultado duradouro e seguro para pets.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🪑</div>
+      <div class="service-title">Cadeiras e Poltronas</div>
+      <p class="service-desc">Higienização de cadeiras de escritório, sala de jantar, poltronas e demais estofados residenciais ou comerciais.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛏️</div>
+      <div class="service-title">Colchões e Cabeceiras</div>
+      <p class="service-desc">Limpeza anti-ácaro e higienização de colchões e cabeceiras para um sono mais saudável e tranquilo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="como-funciona">
+  <div class="section-tag">Processo</div>
+  <h2>Como funciona</h2>
+  <p class="section-sub">Simples, rápido e sem complicação. Do agendamento ao resultado final.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-title">Fale com a gente</div>
+      <p class="step-desc">Entre em contato pelo WhatsApp, informe o tipo de estofado e sua localização em João Pessoa.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-title">Agendamento fácil</div>
+      <p class="step-desc">Escolhemos o melhor dia e horário para você. Atendemos em domicílio, sem burocracia.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-title">Limpeza profissional</div>
+      <p class="step-desc">Nossa equipe chega equipada e realiza a limpeza completa com produtos especializados.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-title">Resultado garantido</div>
+      <p class="step-desc">Seus estofados limpos, perfumados e higienizados. Qualidade que você pode ver e sentir.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section" id="avaliacoes">
+  <div class="section-tag">Depoimentos</div>
+  <h2>O que nossos clientes dizem</h2>
+  <p class="section-sub">Mais de 35 avaliações 5 estrelas no Google. A satisfação dos nossos clientes fala por nós.</p>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Já é a segunda vez que contrato os serviços e a qualidade do trabalho é ótima. Recomendo demais!"</p>
+      <div class="review-author">Cliente Satisfeito</div>
+      <div class="review-via">via Google</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Muito bom o serviço, deixou os bancos do meu carro como novo. Valeu cada centavo!"</p>
+      <div class="review-author">Cliente Satisfeito</div>
+      <div class="review-via">via Google</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Ótimo profissional, limpou meu sofá muito bem! Ficou parecendo que acabei de comprar. Super indico."</p>
+      <div class="review-author">Cliente Satisfeito</div>
+      <div class="review-via">via Google</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Pronto para renovar seus estofados?</h2>
+  <p>Não adie mais. Agende agora pelo WhatsApp e transforme seus estofados com quem tem nota 5,0 no Google.</p>
+  <a href="https://wa.me/5583987619326" class="btn-dark">
+    📲 Falar no WhatsApp agora
+  </a>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contato">
+  <div class="section-tag">Contato</div>
+  <h2>Fale conosco</h2>
+  <p class="section-sub">Atendemos João Pessoa e proximidades. Entre em contato e agende seu serviço.</p>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <div class="contact-label">Telefone / WhatsApp</div>
+          <div class="contact-value"><a href="https://wa.me/5583987619326">(83) 98761-9326</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-label">Endereço</div>
+          <div class="contact-value">R. José Tadeu Cabral, 75 — Mangabeira<br>João Pessoa – PB, 58055-380</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🕐</div>
+        <div>
+          <div class="contact-label">Horário de atendimento</div>
+          <div class="contact-value">Segunda a Sábado: 08:00 às 18:00</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🗺️</div>
+        <div>
+          <div class="contact-label">Área de atendimento</div>
+          <div class="contact-value">João Pessoa e região</div>
+        </div>
+      </div>
+    </div>
+    <div class="whatsapp-block">
+      <h3>Agende pelo WhatsApp</h3>
+      <p>Mande uma mensagem agora e receba um orçamento rápido e sem compromisso. Respondemos em minutos!</p>
+      <a href="https://wa.me/5583987619326?text=Olá!%20Gostaria%20de%20agendar%20uma%20limpeza%20de%20estofado." class="btn-primary" style="display:inline-flex">
+        📲 Iniciar conversa no WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">Master Clean <span>JP</span></div>
+  <p>© 2025 Master Clean JP · CNPJ: 51.364.918/0001-50 · João Pessoa – PB</p>
+  <p style="color:#444; font-size:0.78rem;">Nota 5,0 ⭐ no Google</p>
+</footer>
+
+</body>
+</html>
